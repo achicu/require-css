@@ -392,11 +392,12 @@ define(['./normalize'], function(normalize) {
   
   var waitSeconds;
   var alerted = false;
-  cssAPI.load = function(cssId, req, load, config, parse) {
+  cssAPI.load = function(cssId, req, load, config, parse, extension) {
     
     waitSeconds = waitSeconds || config.waitSeconds || 7;
 
-    var resourceId = cssId + (!parse ? '.css' : '.less');
+    extension = extension || (!parse ? '.css' : '.less');
+    var resourceId = cssId + extension;
 
     // attach the load function to a buffer if there is one in registration
     // if not, we do a full injection load
